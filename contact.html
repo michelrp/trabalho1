@@ -1,0 +1,68 @@
+<!-- Trabalho 1 - HTML
+        - Michel Rodrigues Pereira
+        - Eduardo Miguel Ramos Borges
+        - Tierry Lincoln Ribeiro de Miranda -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QualquerCoisa.com - Contato</title>
+    <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/style.css" rel="stylesheet">
+</head>
+<body>
+    <header class="top" role="header">
+        <div class="container">
+            <a href="index.html" class="navbar-brand pull-left">
+                Recentes
+            </a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <nav class="navbar-collapse collapse" role="navigation">
+                <ul class="navbar-nav nav">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a class="active" href="contact.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="middle">
+        <div class="container">
+            <div class="col-md-9 content">
+                  <section class="form-wrapper">
+                    <form id="first-class" class="form form-horizontal" action="" method="POST">
+		      <fieldset>
+			<legend>Formulário de contato</legend>
+			<div class="form-group">
+			  <label for="name">Nome</label>
+			  <input class="form-control" type="text" name="name" required>
+			</div>
+			<div class="form-group">
+			  <label for="email">Email</label>
+			  <input class="form-control" type="text" required>
+			</div>
+			<div class="form-group">
+			  <label for="about">Deixe sua mensagem</label>
+			  <textarea class="form-control" name="about" cols="30" rows="10"></textarea>
+			</div>
+			<div class="form-group">
+			  <label for="newsletter">Receber newsletter?</label>
+			  <input type="checkbox" name="newsletter" value="1">
+			</div>
+
+			<div class="form-group">
+			  <button class="btn btn-primary" type="submit">Cadastrar!</button>
+			</div>
+			</fieldset>
+		      </form>
+                  </section>
+            </div>
+    <script src="includes/jquery/jquery-2.1.0.min.js"></script>
+    <script src="includes/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
