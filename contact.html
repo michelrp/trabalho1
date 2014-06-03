@@ -6,63 +6,117 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>QualquerCoisa.com - Contato</title>
-    <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="includes/style.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QualquerCoisa.com - Contato</title>
+<link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="includes/style.css" rel="stylesheet">
 </head>
 <body>
-    <header class="top" role="header">
-        <div class="container">
-            <a href="index.html" class="navbar-brand pull-left">
-                Recentes
-            </a>
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="glyphicon glyphicon-align-justify"></span>
-            </button>
-            <nav class="navbar-collapse collapse" role="navigation">
-                <ul class="navbar-nav nav">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="about.html">Sobre</a></li>
-                    <li><a class="active" href="contact.html">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header class="top" role="header">
+  <div class="container">
+    <a href="index.html" class="navbar-brand pull-left">
+      Recentes
+    </a>
+    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="glyphicon glyphicon-align-justify"></span>
+    </button>
+    <nav class="navbar-collapse collapse" role="navigation">
+      <ul class="navbar-nav nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a class="active" href="contact.html">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <div class="middle">
-        <div class="container">
-            <div class="col-md-9 content">
-                  <section class="form-wrapper">
-                    <form id="first-class" class="form form-horizontal" action="" method="POST">
-		      <fieldset>
-			<legend>Formulário de contato</legend>
-			<div class="form-group">
-			  <label for="name">Nome</label>
-			  <input class="form-control" type="text" name="name" required>
-			</div>
-			<div class="form-group">
-			  <label for="email">Email</label>
-			  <input class="form-control" type="text" required>
-			</div>
-			<div class="form-group">
-			  <label for="about">Deixe sua mensagem</label>
-			  <textarea class="form-control" name="about" cols="30" rows="10"></textarea>
-			</div>
-			<div class="form-group">
-			  <label for="newsletter">Receber newsletter?</label>
-			  <input type="checkbox" name="newsletter" value="1">
-			</div>
-
-			<div class="form-group">
-			  <button class="btn btn-primary" type="submit">Cadastrar!</button>
-			</div>
-			</fieldset>
-		      </form>
-                  </section>
+<div class="middle">
+  <div class="container">
+    <div class="col-md-9 content">
+      <section class="form-wrapper">
+        <form id="first-class" class="form form-horizontal" action="" method="POST">
+          <fieldset>
+            <legend>Formulário de contato</legend>
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input class="form-control" type="text" name="name" required>
             </div>
+            <div class="form-group">
+              <label for="sobrenome">Sobrenome</label>
+              <input class="form-control" type="text" name="sobrenome">
+            </div>
+            <div class="form-group">
+              <label for="departamento">Departamento</label>
+              <select class="form-control" name="departamento">
+                <option value="0">Suporte</option>
+                <option value="1">Financeiro</option>
+                <option value="2">Administração</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input id="phone" class="form-control" name="phone" type="text">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" class="form-control" name="email" type="text">
+            </div>
+            <div class="form-group">
+              <label for="about">Deixe sua mensagem</label>
+              <textarea class="form-control" name="about" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="newsletter">Receber newsletter?</label>
+              <input type="checkbox" name="newsletter" value="1">
+              <p class="form-help"><a id="terms" href="#">Leia os termos de uso</a></p>
+            </div>
+
+            <div class="form-group">
+              <button id="submit-button" class="btn btn-primary" type="submit">Cadastrar!</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </div>
+
+    <div id="terms-container" class="terms">
+      <p>Concordando com esses termos você está vendendo a sua alma para nossa empresa.</p>
+      <p>Assim poderemos fazer o que bem entendermos com você, obrigado.</p>
+      <button id="btn-close" class="btn btn-default">Entendi</button>
+    </div>
     <script src="includes/jquery/jquery-2.1.0.min.js"></script>
     <script src="includes/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <script>
+      $('#first-class').on('submit', function (e) {
+        var email = document.querySelector('#email'),
+            phone = document.querySelector('#phone');
+
+        if (!/^(.*)@(.*)\.(.*)$/.test(email.value)) {
+          alert('Email invalido');
+          return false;
+        }
+
+        if (!/^(\d+)$/.test(phone.value)) {
+          alert('Somente números no campo telefone');
+          return false;
+        }
+
+        if (!confirm('Confima que leu e concordou com os termos de uso?')) {
+          return false;
+        }
+      });
+
+      var terms = document.querySelector('#terms-container');
+
+      $('#terms').on('click', function (e) {
+        e.preventDefault();
+        terms.classList.add('show');
+      });
+
+      $('#btn-close').on('click', function (e) {
+          terms.classList.remove('show');
+      });
+    </script>
+    </body>
+    </html>

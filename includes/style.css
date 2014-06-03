@@ -94,3 +94,19 @@ html {
 .to-tutorial {
     text-align: center;
 }
+
+.terms {
+  position: absolute;
+  z-index: 9999;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  box-shadow: 1px 4px 16px 1px;
+  background: #fff;
+  padding: 50px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
